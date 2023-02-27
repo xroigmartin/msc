@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  postgres:
+    container_name: msc_postgres
+    image: 'postgres:15.1-alpine'
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=msc
+    volumes: 
+      - msc_postgres_data:/var/lib/postgresql/data
+    networks:
+      - msc_network
+
+volumes:
+  msc_postgres_data:
+    driver: local
+
+networks:
+  msc_network:
+    driver: bridge
