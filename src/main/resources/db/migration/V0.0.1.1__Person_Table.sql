@@ -8,6 +8,10 @@ create table if not exists public."person"(
     phone          varchar(15),
     mobile         varchar(15) not null,
     email          varchar     not null
+        constraint person_email_uk
+            unique
 );
 
 alter table public."person" owner to msc;
+
+create index person_email_index on person (email);
